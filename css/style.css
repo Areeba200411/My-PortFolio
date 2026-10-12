@@ -1,0 +1,357 @@
+
+
+:root {
+    --bg: #07111f;
+    --panel: #0d1b2a;
+    --panel-light: #102538;
+    --teal: #00e5cc;
+    --white: #f4f7fb;
+    --muted: #a7b4c5;
+    --border: rgba(0, 229, 204, 0.2);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: var(--bg);
+    color: var(--white);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* ========================================
+   2. NAVIGATION HEADER
+======================================== */
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 22px 8%;
+    border-bottom: 1px solid var(--border);
+    background: rgba(7, 17, 31, 0.95);
+    position: relative;
+    z-index: 10;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.logo span,
+.hero h2 span,
+.skills-section h2 span {
+    color: var(--teal);
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+nav a {
+    color: var(--white);
+    text-decoration: none;
+    font-size: 15px;
+    transition: color 0.3s ease;
+}
+
+nav a:hover,
+nav a:focus-visible {
+    color: var(--teal);
+}
+
+/* ========================================
+   3. MAIN PAGE LAYOUT
+======================================== */
+
+main {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    padding: 70px 8%;
+}
+
+/* ========================================
+   4. HERO AND INTRODUCTION
+======================================== */
+
+.hero {
+    width: 100%;
+    max-width: 800px;
+    text-align: center;
+    animation: fadeUp 1s ease both;
+}
+
+.welcome {
+    color: var(--teal);
+    letter-spacing: 4px;
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.hero h2 {
+    font-size: clamp(36px, 6vw, 62px);
+    line-height: 1.2;
+    margin-bottom: 18px;
+}
+
+.hero h3 {
+    font-size: clamp(18px, 3vw, 25px);
+    color: var(--muted);
+    margin-bottom: 20px;
+}
+
+.intro {
+    color: var(--muted);
+    max-width: 620px;
+    margin: 0 auto 30px;
+    line-height: 1.9;
+}
+
+/* ========================================
+   5. BUTTONS AND GLOW EFFECT
+======================================== */
+
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    border-radius: 8px;
+    background: var(--teal);
+    color: var(--bg);
+    font-weight: bold;
+    text-decoration: none;
+    border: 1px solid var(--teal);
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        background 0.3s ease;
+}
+
+.btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 0 22px rgba(0, 229, 204, 0.35);
+}
+
+.btn.secondary {
+    background: transparent;
+    color: var(--teal);
+}
+
+.btn.secondary:hover {
+    background: var(--teal);
+    color: var(--bg);
+}
+
+/* ========================================
+   6. TECHNICAL SKILLS SECTION
+======================================== */
+
+.skills-section {
+    width: 100%;
+    max-width: 1050px;
+    margin: 0 auto;
+    padding: 30px 0;
+    text-align: center;
+    animation: fadeUp 0.8s ease both;
+}
+
+.skills-section h2 {
+    font-size: clamp(32px, 5vw, 48px);
+    line-height: 1.2;
+    margin-bottom: 35px;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+    text-align: left;
+}
+
+.skill-card {
+    background: linear-gradient(
+        135deg,
+        var(--panel),
+        var(--panel-light)
+    );
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 25px;
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.skill-card h3 {
+    color: var(--teal);
+    margin-bottom: 12px;
+    font-size: 19px;
+}
+
+.skill-card p {
+    color: var(--muted);
+    line-height: 1.8;
+}
+
+.skill-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--teal);
+    box-shadow: 0 0 22px rgba(0, 229, 204, 0.15);
+}
+
+/* ========================================
+   7. FOOTER
+======================================== */
+
+footer {
+    text-align: center;
+    padding: 20px;
+    color: var(--muted);
+    border-top: 1px solid var(--border);
+    font-size: 14px;
+}
+
+/* ========================================
+   8. ANIMATIONS
+======================================== */
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes glow {
+    0%,
+    100% {
+        box-shadow: 0 0 5px rgba(0, 229, 204, 0.1);
+    }
+
+    50% {
+        box-shadow: 0 0 18px rgba(0, 229, 204, 0.2);
+    }
+}
+
+/* ========================================
+   9. TABLET RESPONSIVENESS
+======================================== */
+
+@media (max-width: 900px) {
+    header {
+        padding: 20px 5%;
+    }
+
+    main {
+        padding: 55px 5%;
+    }
+
+    .skills-grid {
+        gap: 16px;
+    }
+
+    .skill-card {
+        padding: 22px;
+    }
+}
+
+/* ========================================
+   10. MOBILE RESPONSIVENESS
+======================================== */
+
+@media (max-width: 600px) {
+    header {
+        flex-direction: column;
+        gap: 15px;
+        padding: 20px;
+    }
+
+    nav {
+        gap: 18px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    nav a {
+        font-size: 14px;
+    }
+
+    main {
+        padding: 45px 20px;
+        gap: 25px;
+    }
+
+    .hero h2 {
+        font-size: 36px;
+    }
+
+    .welcome {
+        font-size: 11px;
+        letter-spacing: 3px;
+    }
+
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .skill-card {
+        padding: 20px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .btn {
+        text-align: center;
+    }
+}
+
+/* ========================================
+   11. ACCESSIBILITY
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
