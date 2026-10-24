@@ -1,51 +1,363 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Areeba Sharif's personal developer portfolio.">
+
+    <meta name="description"
+        content="Areeba Sharif's portfolio showcasing computer science skills, web development projects, and machine learning work.">
+
     <title>Areeba Sharif | Developer Portfolio</title>
+
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/chatbot.css">
 </head>
+
 <body>
 
-    <header>
-        <h1 class="logo">Areeba<span>.</span></h1>
+    <!-- Header and Navigation -->
+    <header class="header">
+        <nav class="navbar" aria-label="Main navigation">
 
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="about.html">About</a>
-            <a href="contact.html">Contact</a>
+            <a href="index.html" class="logo">
+                Areeba<span>.</span>
+            </a>
+
+            <ul class="nav-links">
+                <li>
+                    <a href="index.html" class="active">Home</a>
+                </li>
+                <li>
+                    <a href="about.html">About</a>
+                </li>
+                <li>
+                    <a href="skills.html">Skills</a>
+                </li>
+                <li>
+                    <a href="projects.html">Projects</a>
+                </li>
+                <li>
+                    <a href="contact.html">Contact</a>
+                </li>
+            </ul>
+
         </nav>
     </header>
 
     <main>
-        <section class="hero">
+    
+<!-- Hero Section -->
+<section class="hero" id="home">
+    <div class="hero-content">
+        <div class="hero-text">
+
             <p class="welcome">WELCOME TO MY PORTFOLIO</p>
 
-            <h2>Hi, I'm <span>Areeba Sharif</span></h2>
+            <h1>Hi, I'm <span>Areeba Sharif</span></h1>
 
-            <h3>Computer Science Student & Web Developer</h3>
+            <h2>Computer Science Student &amp; Web Developer</h2>
 
             <p class="intro">
-                I'm a BS Computer Science student passionate about
-                web development, technology, and exploring AI.
-                I'm building projects to improve my skills and solve
-                real-world problems.
+                I am a Computer Science student interested in web
+                development and artificial intelligence. I enjoy
+                learning new technologies and building projects
+                to improve my skills.
             </p>
 
             <div class="hero-buttons">
-                <a href="about.html" class="btn">Explore My Work</a>
-                <a href="contact.html" class="btn secondary">Contact Me</a>
+                <a href="#projects" class="btn">
+                    View My Projects
+                </a>
+
+                <a href="contact.html" class="btn secondary">
+                    Contact Me
+                </a>
             </div>
+
+        </div>
+    </div>
+</section>
+
+        
+
+        <!-- Featured Skills Section -->
+        <section class="home-section" id="skills">
+
+            <p class="welcome">WHAT I WORK WITH</p>
+
+            <h2>Featured <span>Skills</span></h2>
+
+            <div class="home-grid">
+
+                <article class="home-card">
+                    <h3>Web Development</h3>
+
+                    <p>
+                        HTML, CSS, JavaScript, React, Node.js,
+                        and Express.js.
+                    </p>
+                </article>
+
+                <article class="home-card">
+                    <h3>Programming</h3>
+
+                    <p>
+                        Python, C++, JavaScript, and SQL.
+                    </p>
+                </article>
+
+                <article class="home-card">
+                    <h3>Databases &amp; Tools</h3>
+
+                    <p>
+                        MongoDB, MySQL, Git, GitHub, and VS Code.
+                    </p>
+                </article>
+
+            </div>
+
+            <div class="hero-buttons">
+                <a href="skills.html" class="btn secondary">
+                    View All Skills
+                </a>
+            </div>
+
         </section>
+
+        <!-- Featured Projects Section -->
+        <section class="home-section" id="projects">
+
+            <p class="welcome">MY RECENT WORK</p>
+
+            <h2>Featured <span>Projects</span></h2>
+
+            <div class="home-grid">
+
+                <!-- Project 1: LMS -->
+                <article class="home-card">
+
+                    <h3>Learning Management System</h3>
+
+                    <p>
+                        A web application for managing students,
+                        instructors, courses, lectures, learning
+                        materials, and assessments.
+                    </p>
+
+                    <p class="project-tech">
+                        HTML/CSS · JavaScript · Node.js · MongoDB
+                    </p>
+
+                    <a
+                        href="https://github.com/Areeba-Sharif/LMS-PROJECT"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="project-link">
+                        View on GitHub →
+                    </a>
+
+                </article>
+
+                <!-- Project 2: MedNoviAI -->
+                <article class="home-card">
+
+                    <h3>MedNoviAI</h3>
+
+                    <p>
+                        An academic healthcare web application project
+                        focused on patient intake, AI-assisted chat,
+                        and organizing health-related information.
+                    </p>
+
+                    <p class="project-tech">
+                        Next.js · React · JavaScript · AI Integration
+                    </p>
+
+                    <p>
+                        <span class="project-status">
+                            Academic Team Project
+                        </span>
+                    </p>
+
+                </article>
+
+                <!-- Project 3: Portfolio -->
+                <article class="home-card">
+
+                    <h3>Personal Portfolio Website</h3>
+
+                    <p>
+                        A personal website designed to introduce me,
+                        showcase my technical skills, present my
+                        projects, and share my learning journey.
+                    </p>
+
+                    <p class="project-tech">
+                        HTML5 · CSS3 · JavaScript
+                    </p>
+
+                    <p>
+                        <span class="project-status">
+                            Personal Project
+                        </span>
+                    </p>
+
+                </article>
+
+                <!-- Project 4: Fraud Detection -->
+                <article class="home-card">
+
+                    <h3>Online Payment Fraud Detection System</h3>
+
+                    <p>
+                        A machine learning project that analyzes
+                        online payment transactions and compares
+                        classification algorithms to identify
+                        potentially fraudulent transactions.
+                    </p>
+
+                    <p class="project-tech">
+                        Python · Pandas · NumPy · Matplotlib ·
+                        Seaborn · Scikit-learn · Imbalanced-learn
+                    </p>
+
+                    <p>
+                        <strong>Models:</strong>
+                        Logistic Regression, Decision Tree,
+                        Random Forest, and Linear SVM.
+                    </p>
+
+                    <a
+                        href="https://github.com/Areeba-Sharif/Online-Payment-Fraud-Detection"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="project-link">
+                        View on GitHub →
+                    </a>
+
+                </article>
+
+            </div>
+
+            <div class="hero-buttons projects-button">
+                <a href="projects.html" class="btn">
+                    View All Projects
+                </a>
+
+                <a href="about.html" class="btn secondary">
+                    Learn More About Me
+                </a>
+            </div>
+
+        </section>
+
+        <!-- Contact Call to Action -->
+        <section class="home-section contact-preview">
+
+            <p class="welcome">LET'S CONNECT</p>
+
+            <h2>
+                Have a <span>Project in Mind?</span>
+            </h2>
+
+            <p class="intro">
+                I'm interested in learning, collaborating, and
+                exploring new opportunities in technology.
+                Feel free to contact me about internships,
+                projects, or professional opportunities.
+            </p>
+
+            <div class="hero-buttons">
+                <a href="contact.html" class="btn">
+                    Get in Touch
+                </a>
+
+                <a href="about.html" class="btn secondary">
+                    About Me
+                </a>
+            </div>
+
+        </section>
+
     </main>
 
-    <footer>
-        <p>&copy; 2026 Areeba Sharif. All rights reserved.</p>
+    <!-- Footer -->
+    <footer class="footer">
+        <p>
+            &copy; 2026 Areeba Sharif. All rights reserved.
+        </p>
     </footer>
 
+    
     <script src="js/script.js"></script>
+
+    <!-- AI Portfolio Assistant -->
+    <div class="chatbot-panel" id="chatbotPanel"
+         role="dialog"
+         aria-label="Areeba's AI Portfolio Assistant">
+
+        <div class="chatbot-header">
+            <div>
+                <h3>Areeba's AI Assistant</h3>
+                <p>Ask me about Areeba!</p>
+            </div>
+
+            <button class="chatbot-close"
+                    id="chatbotClose"
+                    type="button"
+                    aria-label="Close chat">&times;</button>
+        </div>
+
+        <div class="chatbot-messages"
+             id="chatbotMessages"
+             aria-live="polite">
+            <div class="chatbot-message bot">
+                Hi! Welcome to Areeba's portfolio.
+
+                Ask me about her skills, projects, education,
+                or contact details.
+            </div>
+        </div>
+
+        <div class="chatbot-suggestions">
+            <button type="button"
+                    data-question="What are Areeba's skills?">Skills</button>
+
+            <button type="button"
+                    data-question="Tell me about Areeba's projects.">Projects</button>
+
+            <button type="button"
+                    data-question="Tell me about Areeba's education.">Education</button>
+
+            <button type="button"
+                    data-question="How can I contact Areeba?">Contact</button>
+        </div>
+
+        <form class="chatbot-form" id="chatbotForm">
+            <input type="text"
+                   id="chatbotInput"
+                   placeholder="Ask a question..."
+                   aria-label="Your question"
+                   autocomplete="off"
+                   required>
+
+            <button type="submit">Send</button>
+        </form>
+    </div>
+
+    <!-- Floating AI Button (no icon required) -->
+    <button class="chatbot-toggle"
+            id="chatbotToggle"
+            type="button"
+            aria-label="Open portfolio assistant"
+            aria-controls="chatbotPanel"
+            aria-expanded="false">
+        <span class="chatbot-button-text">AI</span>
+    </button>
+
+    <!-- Chatbot JavaScript -->
+    <script src="js/chatbot.js" defer></script>
+
 </body>
 </html>

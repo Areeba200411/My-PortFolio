@@ -1,87 +1,223 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Learn about Areeba Sharif, her technical skills, and her goals.">
+
+    <meta name="description"
+        content="Learn more about Areeba Sharif, a Computer Science student interested in web development, MERN stack development, and artificial intelligence.">
+
     <title>About Me | Areeba Sharif</title>
+
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/chatbot.css">
 </head>
+
 <body>
 
-    <header>
-        <h1 class="logo">Areeba<span>.</span></h1>
+    <!-- Navigation -->
+    <header class="header">
+        <nav class="navbar">
+            <a href="index.html" class="logo">Areeba<span>.</span></a>
 
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="about.html">About</a>
-            <a href="contact.html">Contact</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html" class="active">About</a></li>
+                <li><a href="skills.html">Skills</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
         </nav>
     </header>
 
+    <!-- About Section -->
     <main>
-        <section class="hero">
-            <p class="welcome">GET TO KNOW ME</p>
-            <h2>About <span>Me</span></h2>
+        <section class="about-section">
 
-            <p class="intro">
-                I'm a BS Computer Science student at UMT,
-                interested in web development and artificial intelligence.
-                I'm learning to build useful, user-friendly websites
-                and improve my programming skills through practical projects.
-            </p>
-        </section>
+            <div class="section-heading">
+                <p class="section-subtitle">GET TO KNOW ME</p>
+                <h1>About <span>Me</span></h1>
+                <p>
+                    A little introduction about who I am,
+                    what I do, and what I want to achieve.
+                </p>
+            </div>
 
-        <section class="skills-section">
-            <p class="welcome">WHAT I WORK WITH</p>
-            <h2>Technical <span>Skills</span></h2>
+            <div class="about-container">
 
-            <div class="skills-grid">
-
-                <div class="skill-card">
-                    <h3>Programming</h3>
-                    <p>Python, C++, JavaScript, SQL</p>
+                <!-- Profile -->
+                <div class="about-image">
+                    <div class="profile-placeholder">
+                        <span>AS</span>
+                    </div>
                 </div>
 
-                <div class="skill-card">
-                    <h3>Web Development</h3>
-                    <p>HTML, CSS, React, Node.js, Express.js</p>
-                </div>
+                <!-- Introduction -->
+                <div class="about-content">
+                    <h2>Hello, I'm Areeba Sharif</h2>
 
-                <div class="skill-card">
-                    <h3>Databases</h3>
-                    <p>MySQL, MongoDB</p>
-                </div>
+                    <h3>
+                        Computer Science Student |
+                        <span>MERN Stack Developer</span>
+                    </h3>
 
-                <div class="skill-card">
-                    <h3>Data Science &amp; AI/ML</h3>
-                    <p>Pandas, NumPy, Scikit-learn, Machine Learning</p>
-                </div>
+                    <p>
+                        I am a Computer Science student at the University
+                        of Management and Technology (UMT), Lahore.
+                        I am interested in web development and building
+                        useful digital solutions.
+                    </p>
 
-                <div class="skill-card">
-                    <h3>Tools</h3>
-                    <p>Git, GitHub, VS Code, Google Colab, MySQL Workbench</p>
+                    <p>
+                        I enjoy learning new technologies and improving
+                        my programming skills by working on practical
+                        projects. My main interests include frontend
+                        development, backend development, databases,
+                        and artificial intelligence.
+                    </p>
+
+                    <p>
+                        My goal is to become a skilled software developer,
+                        gain practical industry experience, and build
+                        applications that solve real-world problems.
+                        I believe in continuous learning and improving
+                        through practice.
+                    </p>
+
+                    <div class="about-details">
+                        <div class="detail-item">
+                            <strong>Name:</strong>
+                            <span>Areeba Sharif</span>
+                        </div>
+
+                        <div class="detail-item">
+                            <strong>Education:</strong>
+                            <span>BS Computer Science</span>
+                        </div>
+
+                        <div class="detail-item">
+                            <strong>University:</strong>
+                            <span>UMT, Lahore</span>
+                        </div>
+
+                        <div class="detail-item">
+                            <strong>Interests:</strong>
+                            <span>Web Development, AI</span>
+                        </div>
+                    </div>
+
+                    <a href="contact.html" class="btn">Contact Me</a>
                 </div>
 
             </div>
         </section>
 
-        <section class="hero">
-            <p class="welcome">MY DIRECTION</p>
-            <h2>My <span>Goal</span></h2>
+        <!-- Education -->
+        <section class="education-section">
+            <div class="section-heading">
+                <p class="section-subtitle">MY ACADEMIC BACKGROUND</p>
+                <h2>My <span>Education</span></h2>
+            </div>
 
-            <p class="intro">
-                My goal is to become a skilled developer by building
-                real-world projects, exploring AI technologies,
-                and continuously improving my technical skills.
-            </p>
+            <div class="education-card">
+                <div class="education-icon">01</div>
+
+                <div class="education-content">
+                    <span class="education-status">Currently Studying</span>
+                    <h3>Bachelor of Science in Computer Science</h3>
+                    <h4>University of Management and Technology (UMT)</h4>
+                    <p>
+                        Developing my knowledge of programming,
+                        software development, databases, and computer
+                        science fundamentals.
+                    </p>
+                    <span class="education-date">Expected Graduation: 2027</span>
+                </div>
+            </div>
         </section>
+
+        <!-- Interests -->
+        <section class="interests-section">
+            <div class="section-heading">
+                <p class="section-subtitle">WHAT I ENJOY</p>
+                <h2>My <span>Interests</span></h2>
+            </div>
+
+            <div class="interests-grid">
+
+                <div class="interest-card">
+                    <div class="interest-icon">&lt;/&gt;</div>
+                    <h3>Web Development</h3>
+                    <p>
+                        Creating responsive websites and learning
+                        how frontend and backend technologies work together.
+                    </p>
+                </div>
+
+                <div class="interest-card">
+                    <div class="interest-icon">{ }</div>
+                    <h3>MERN Stack</h3>
+                    <p>
+                        Exploring MongoDB, Express.js, React.js, and
+                        Node.js to develop full-stack web applications.
+                    </p>
+                </div>
+
+                <div class="interest-card">
+                    <div class="interest-icon">AI</div>
+                    <h3>Artificial Intelligence</h3>
+                    <p>
+                        Learning about AI and exploring ways to use
+                        intelligent technologies in practical applications.
+                    </p>
+                </div>
+
+                <div class="interest-card">
+                    <div class="interest-icon">↗</div>
+                    <h3>Continuous Learning</h3>
+                    <p>
+                        Improving my technical skills through practice,
+                        projects, and exploring new development tools.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Career Goals -->
+        <section class="goals-section">
+            <div class="goals-content">
+                <p class="section-subtitle">LOOKING AHEAD</p>
+                <h2>My Career <span>Goals</span></h2>
+
+                <p>
+                    I want to grow as a software developer by gaining
+                    hands-on experience, collaborating with development
+                    teams, and working on real-world projects. I aim
+                    to strengthen my technical foundation and create
+                    reliable, user-friendly applications.
+                </p>
+
+                <p>
+                    I am open to internship opportunities, collaborative
+                    projects, and experiences that help me learn,
+                    contribute, and grow professionally.
+                </p>
+
+                <a href="projects.html" class="btn">Explore My Projects</a>
+            </div>
+        </section>
+
     </main>
 
-    <footer>
-        <p>&copy; 2026 Areeba Sharif. All rights reserved.</p>
+    <!-- Footer -->
+    <footer class="footer">
+        <p>
+            &copy; 2026 Areeba Sharif.
+            All Rights Reserved.
+        </p>
     </footer>
 
-    <script src="js/script.js"></script>
 </body>
 </html>
