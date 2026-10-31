@@ -64,8 +64,6 @@ section {
 
 /* ========================================
    2. HEADER AND NAVIGATION
-   Supports both direct nav links and
-   .navbar / .nav-links markup
 ======================================== */
 
 header,
@@ -525,8 +523,6 @@ nav a:focus-visible,
    8. ABOUT PAGE
 ======================================== */
 
-/* Use profile.jpg as a page background only when
-   the About page contains .profile-section. */
 body:has(.profile-section) {
     position: relative;
     isolation: isolate;
@@ -911,9 +907,455 @@ body:has(.profile-section) footer {
 .contact-form .btn {
     margin-top: 10px;
 }
+/* ========================================
+   10. WEATHER BUTTON AND POPUP
+======================================== */
+
+/* WEATHER NAVIGATION BUTTON */
+
+.weather-toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    background: var(--teal);
+    color: var(--bg);
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.weather-toggle:hover {
+    box-shadow: 0 0 15px rgba(0, 229, 204, 0.4);
+    transform: translateY(-2px);
+}
+
 
 /* ========================================
-   10. FOOTER
+   WEATHER POPUP WITH ANIMATION
+======================================== */
+
+.weather-widget {
+    display: block;
+    position: fixed;
+    top: 85px;
+    right: 25px;
+    left: auto;
+    width: 320px;
+    max-width: calc(100% - 30px);
+    max-height: 80vh;
+    overflow-y: auto;
+    box-sizing: border-box;
+    padding: 18px;
+    background: rgba(13, 27, 42, 0.97);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(0, 229, 204, 0.35);
+    border-radius: 15px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+    z-index: 1000;
+
+    /* Hidden state */
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(-15px) scale(0.97);
+
+    /* Smooth animation */
+    transition:
+        opacity 0.3s ease,
+        transform 0.3s ease,
+        visibility 0.3s ease;
+}
+
+/* Visible state */
+
+.weather-widget.show {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0) scale(1);
+}
+
+
+/* ========================================
+   WIDGET HEADER
+======================================== */
+
+.weather-widget-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--teal);
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+}
+
+.weather-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--teal);
+    border-radius: 50%;
+}
+
+.weather-close {
+    background: transparent;
+    border: none;
+    color: var(--white);
+    font-size: 24px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.weather-close:hover {
+    color: var(--teal);
+    transform: rotate(90deg);
+}
+
+
+/* ========================================
+   CITY SEARCH
+======================================== */
+
+.weather-widget .weather-search {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.weather-widget .weather-search input {
+    flex: 1;
+    min-width: 0;
+    width: auto;
+    padding: 10px;
+    font-size: 14px;
+    background: var(--panel-light);
+    border: 1px solid var(--teal);
+    border-radius: 7px;
+    color: var(--white);
+    outline: none;
+}
+
+.weather-widget .weather-search input::placeholder {
+    color: var(--muted);
+}
+
+.weather-widget .weather-search input:focus {
+    box-shadow: 0 0 10px rgba(0, 229, 204, 0.2);
+}
+
+.weather-widget .weather-search button {
+    padding: 10px 14px;
+    background: var(--teal);
+    color: var(--bg);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s ease;
+}
+
+.weather-widget .weather-search button:hover {
+    box-shadow: 0 0 15px rgba(0, 229, 204, 0.3);
+    transform: translateY(-2px);
+}
+
+
+/* ========================================
+   WEATHER STATUS
+======================================== */
+
+.weather-widget #weather-status {
+    font-size: 12px;
+    color: var(--muted);
+    margin: 12px 0;
+}
+
+
+/* ========================================
+   CURRENT WEATHER RESULTS
+======================================== */
+
+.weather-widget .weather-result {
+    display: none;
+    margin-top: 15px;
+    padding: 12px;
+    background: var(--panel-light);
+    border-radius: 10px;
+}
+
+.weather-widget .weather-result h2 {
+    font-size: 30px;
+    color: var(--teal);
+    margin: 8px 0;
+}
+
+.weather-widget .weather-result h3 {
+    font-size: 15px;
+    color: var(--white);
+}
+
+.weather-widget .weather-details {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 12px;
+    font-size: 12px;
+}
+
+.weather-widget .weather-details span {
+    color: var(--teal);
+}
+
+
+/* ========================================
+   WEATHER ICONS
+======================================== */
+
+.weather-icon {
+    font-size: 20px;
+    margin-right: 8px;
+    color: var(--teal);
+}
+
+.weather-icon.sunny {
+    color: #ffd166;
+}
+
+.weather-icon.cloudy {
+    color: #b8c7d9;
+}
+
+.weather-icon.rainy {
+    color: #58a6ff;
+}
+
+.weather-icon.stormy {
+    color: #f4c542;
+}
+
+
+/* ========================================
+   FORECAST HEADINGS
+======================================== */
+
+.forecast-heading {
+    color: var(--teal);
+    font-size: 15px;
+    margin-top: 20px;
+    margin-bottom: 8px;
+}
+
+
+/* ========================================
+   HOURLY FORECAST DESIGN
+======================================== */
+
+#weather-hourly {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    padding: 12px 4px;
+    scroll-behavior: smooth;
+}
+
+#weather-hourly::-webkit-scrollbar {
+    height: 5px;
+}
+
+#weather-hourly::-webkit-scrollbar-thumb {
+    background: var(--teal);
+    border-radius: 10px;
+}
+
+#weather-hourly::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.hourly-card {
+    min-width: 105px;
+    flex-shrink: 0;
+    text-align: center;
+    padding: 12px 8px;
+    background: rgba(7, 17, 31, 0.8);
+    border: 1px solid rgba(0, 229, 204, 0.2);
+    border-radius: 10px;
+    transition: 0.3s ease;
+}
+
+.hourly-card:hover {
+    border-color: var(--teal);
+    transform: translateY(-4px);
+}
+
+.hourly-time {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.hourly-condition {
+    margin: 10px 0;
+    font-size: 12px;
+}
+
+.hourly-card h4 {
+    color: var(--teal);
+    font-size: 19px;
+    margin: 8px 0;
+}
+
+.hourly-rain {
+    color: var(--muted);
+    font-size: 11px;
+}
+
+
+/* ========================================
+   7-DAY FORECAST DESIGN
+======================================== */
+
+#weather-forecast {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    margin-top: 12px;
+}
+
+.forecast-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 12px;
+    background: rgba(7, 17, 31, 0.8);
+    border: 1px solid rgba(0, 229, 204, 0.15);
+    border-radius: 9px;
+    transition: 0.3s ease;
+}
+
+.forecast-card:hover {
+    border-color: var(--teal);
+    transform: translateX(3px);
+}
+
+.forecast-day {
+    color: var(--white);
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.forecast-date {
+    color: var(--muted);
+    font-size: 11px;
+    margin-top: 4px;
+}
+
+.forecast-condition {
+    color: var(--white);
+    font-size: 12px;
+}
+
+.forecast-temperature {
+    color: var(--teal);
+    font-size: 12px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+
+/* ========================================
+   MOBILE RESPONSIVE DESIGN
+======================================== */
+
+@media (max-width: 768px) {
+
+    .weather-widget {
+        top: 75px;
+        right: 15px;
+        width: min(320px, calc(100% - 30px));
+        max-height: 75vh;
+    }
+
+    .weather-toggle {
+        padding: 8px 12px;
+        font-size: 13px;
+    }
+
+    .forecast-card {
+        gap: 5px;
+        padding: 10px 8px;
+    }
+
+    .forecast-condition {
+        font-size: 11px;
+    }
+
+    .forecast-temperature {
+        font-size: 11px;
+    }
+}
+/* ========================================
+   CELSIUS / FAHRENHEIT SWITCH
+======================================== */
+
+.temperature-toggle {
+    display: flex;
+    justify-content: flex-end;
+    gap: 5px;
+    margin: 10px 0;
+}
+
+.temperature-toggle button {
+    padding: 6px 12px;
+    background: var(--panel-light);
+    color: var(--muted);
+    border: 1px solid rgba(0, 229, 204, 0.3);
+    border-radius: 6px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.temperature-toggle button.active,
+.temperature-toggle button:hover {
+    background: var(--teal);
+    color: var(--bg);
+    border-color: var(--teal);
+}
+/* ========================================
+   USE MY LOCATION BUTTON
+======================================== */
+
+.location-weather-btn {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    background: transparent;
+    color: var(--teal);
+    border: 1px solid var(--teal);
+    border-radius: 7px;
+    font-size: 13px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.location-weather-btn:hover {
+    background: var(--teal);
+    color: var(--bg);
+    box-shadow: 0 0 12px rgba(0, 229, 204, 0.3);
+}
+
+.location-weather-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+/* ========================================
+   11. FOOTER
 ======================================== */
 
 footer {
@@ -925,7 +1367,7 @@ footer {
 }
 
 /* ========================================
-   11. ANIMATIONS
+   12. GENERAL ANIMATIONS
 ======================================== */
 
 @keyframes fadeUp {
@@ -933,6 +1375,7 @@ footer {
         opacity: 0;
         transform: translateY(25px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -940,8 +1383,13 @@ footer {
 }
 
 @keyframes heroFadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 @keyframes heroSlideUp {
@@ -949,6 +1397,7 @@ footer {
         opacity: 0;
         transform: translateY(30px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -959,6 +1408,7 @@ footer {
     0%, 100% {
         text-shadow: 0 0 4px rgba(0, 229, 204, 0.15);
     }
+
     50% {
         text-shadow: 0 0 14px rgba(0, 229, 204, 0.55);
     }
@@ -1002,10 +1452,469 @@ footer {
 }
 
 /* ========================================
-   12. TABLET RESPONSIVENESS
+   13. SKILLS PAGE ANIMATIONS
+======================================== */
+
+.skills-section > .welcome {
+    animation: skillsFadeIn 0.7s ease both;
+}
+
+.skills-section > h2 {
+    animation: skillsSlideUp 0.8s ease 0.15s both;
+}
+
+.skills-section > .intro {
+    animation: skillsSlideUp 0.8s ease 0.3s both;
+}
+
+.skills-grid .skill-card {
+    opacity: 0;
+    animation: skillsSlideUp 0.7s ease forwards;
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.skills-grid .skill-card:nth-child(1) {
+    animation-delay: 0.35s;
+}
+
+.skills-grid .skill-card:nth-child(2) {
+    animation-delay: 0.45s;
+}
+
+.skills-grid .skill-card:nth-child(3) {
+    animation-delay: 0.55s;
+}
+
+.skills-grid .skill-card:nth-child(4) {
+    animation-delay: 0.65s;
+}
+
+.skills-grid .skill-card:nth-child(5) {
+    animation-delay: 0.75s;
+}
+
+.skills-grid .skill-card:nth-child(6) {
+    animation-delay: 0.85s;
+}
+
+.skills-grid .skill-card:nth-child(7) {
+    animation-delay: 0.95s;
+}
+
+.skills-grid .skill-card:nth-child(8) {
+    animation-delay: 1.05s;
+}
+
+.skills-grid .skill-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--teal);
+    box-shadow: 0 0 25px rgba(0, 229, 204, 0.2);
+}
+
+.skill-card .project-tech {
+    transition:
+        background 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.skill-card:hover .project-tech {
+    background: rgba(0, 229, 204, 0.13);
+    border-color: var(--teal);
+}
+
+.home-grid .home-card {
+    animation: skillsSlideUp 0.8s ease both;
+}
+
+.home-grid .home-card:nth-child(1) {
+    animation-delay: 0.15s;
+}
+
+.home-grid .home-card:nth-child(2) {
+    animation-delay: 0.3s;
+}
+
+.home-grid .home-card:nth-child(3) {
+    animation-delay: 0.45s;
+}
+
+.contact-preview .btn {
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.contact-preview .btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 0 22px rgba(0, 229, 204, 0.3);
+}
+
+/* ========================================
+   14. ABOUT PAGE ANIMATIONS
+======================================== */
+
+.about-section .section-heading,
+.education-section .section-heading,
+.interests-section .section-heading {
+    animation: skillsFadeIn 0.8s ease both;
+}
+
+.about-section .about-image {
+    animation: aboutSlideLeft 0.9s ease 0.15s both;
+}
+
+.about-section .about-content {
+    animation: aboutSlideRight 0.9s ease 0.25s both;
+}
+
+.profile-placeholder {
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+.profile-placeholder:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 28px rgba(0, 229, 204, 0.3);
+}
+
+.about-details .detail-item {
+    animation: skillsSlideUp 0.6s ease both;
+}
+
+.about-details .detail-item:nth-child(1) {
+    animation-delay: 0.3s;
+}
+
+.about-details .detail-item:nth-child(2) {
+    animation-delay: 0.4s;
+}
+
+.about-details .detail-item:nth-child(3) {
+    animation-delay: 0.5s;
+}
+
+.about-details .detail-item:nth-child(4) {
+    animation-delay: 0.6s;
+}
+
+.education-card {
+    animation: skillsSlideUp 0.8s ease 0.2s both;
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.education-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--teal);
+    box-shadow: 0 0 22px rgba(0, 229, 204, 0.15);
+}
+
+.interests-grid .interest-card {
+    animation: skillsSlideUp 0.7s ease both;
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.interests-grid .interest-card:nth-child(1) {
+    animation-delay: 0.15s;
+}
+
+.interests-grid .interest-card:nth-child(2) {
+    animation-delay: 0.3s;
+}
+
+.interests-grid .interest-card:nth-child(3) {
+    animation-delay: 0.45s;
+}
+
+.interests-grid .interest-card:nth-child(4) {
+    animation-delay: 0.6s;
+}
+
+.interests-grid .interest-card:hover {
+    transform: translateY(-7px);
+    border-color: var(--teal);
+    box-shadow: 0 0 24px rgba(0, 229, 204, 0.17);
+}
+
+.interest-icon {
+    transition:
+        transform 0.3s ease,
+        color 0.3s ease;
+}
+
+.interest-card:hover .interest-icon {
+    transform: scale(1.12);
+    color: var(--teal);
+}
+
+.goals-section .goals-content {
+    animation: skillsSlideUp 0.8s ease both;
+}
+
+.about-section .btn,
+.goals-section .btn {
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.about-section .btn:hover,
+.goals-section .btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 0 22px rgba(0, 229, 204, 0.25);
+}
+
+@keyframes aboutSlideLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-35px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes aboutSlideRight {
+    from {
+        opacity: 0;
+        transform: translateX(35px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* ========================================
+   15. PROJECTS PAGE ANIMATIONS
+======================================== */
+
+.projects-section > .welcome {
+    animation: skillsFadeIn 0.7s ease both;
+}
+
+.projects-section > h1 {
+    animation: skillsSlideUp 0.8s ease 0.15s both;
+}
+
+.projects-section > .intro {
+    animation: skillsSlideUp 0.8s ease 0.3s both;
+}
+
+.projects-grid .project-card {
+    animation: skillsSlideUp 0.75s ease both;
+    transition:
+        transform 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+.projects-grid .project-card:nth-child(1) {
+    animation-delay: 0.35s;
+}
+
+.projects-grid .project-card:nth-child(2) {
+    animation-delay: 0.5s;
+}
+
+.projects-grid .project-card:nth-child(3) {
+    animation-delay: 0.65s;
+}
+
+.projects-grid .project-card:nth-child(4) {
+    animation-delay: 0.8s;
+}
+
+.projects-grid .project-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--teal);
+    box-shadow: 0 0 25px rgba(0, 229, 204, 0.18);
+}
+
+.project-card .project-icon {
+    transition:
+        transform 0.35s ease,
+        background 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+.project-card:hover .project-icon {
+    transform: scale(1.08);
+    box-shadow: 0 0 18px rgba(0, 229, 204, 0.2);
+}
+
+.project-card .project-tech span {
+    transition:
+        color 0.25s ease,
+        background 0.25s ease,
+        border-color 0.25s ease;
+}
+
+.project-card .project-tech span:hover {
+    color: var(--teal);
+    background: rgba(0, 229, 204, 0.12);
+    border-color: var(--teal);
+}
+
+.project-card .project-link {
+    display: inline-block;
+    transition:
+        color 0.25s ease,
+        transform 0.25s ease;
+}
+
+.project-card .project-link:hover {
+    color: var(--teal);
+    transform: translateX(5px);
+}
+
+.goals-section > .welcome {
+    animation: skillsFadeIn 0.7s ease both;
+}
+
+.goals-section > h2 {
+    animation: skillsSlideUp 0.8s ease 0.1s both;
+}
+
+.goals-section .goals-content {
+    animation: skillsSlideUp 0.8s ease 0.25s both;
+}
+
+.goals-section li {
+    transition:
+        color 0.25s ease,
+        transform 0.25s ease;
+}
+
+.goals-section li:hover {
+    color: var(--teal);
+    transform: translateX(5px);
+}
+
+.contact-preview > .welcome,
+.contact-preview > h2,
+.contact-preview > p,
+.contact-preview > .btn {
+    animation: skillsSlideUp 0.7s ease both;
+}
+
+.contact-preview > h2 {
+    animation-delay: 0.1s;
+}
+
+.contact-preview > p {
+    animation-delay: 0.2s;
+}
+
+.contact-preview > .btn {
+    animation-delay: 0.3s;
+}
+
+.contact-preview > .btn {
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.contact-preview > .btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 0 22px rgba(0, 229, 204, 0.25);
+}
+
+/* ========================================
+   16. CONTACT PAGE ANIMATIONS
+======================================== */
+
+.contact-section > .welcome {
+    animation: skillsFadeIn 0.7s ease both;
+}
+
+.contact-section > h1 {
+    animation: skillsSlideUp 0.8s ease 0.15s both;
+}
+
+.contact-section > .intro {
+    animation: skillsSlideUp 0.8s ease 0.3s both;
+}
+
+.contact-info {
+    animation: aboutSlideLeft 0.8s ease 0.35s both;
+}
+
+.contact-form-container {
+    animation: aboutSlideRight 0.8s ease 0.45s both;
+}
+
+.contact-info .contact-item {
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.contact-info .contact-item:hover {
+    transform: translateX(6px);
+    border-color: var(--teal);
+    box-shadow: 0 0 18px rgba(0, 229, 204, 0.12);
+}
+
+.contact-info .contact-item a {
+    transition: color 0.25s ease;
+    overflow-wrap: anywhere;
+}
+
+.contact-info .contact-item a:hover {
+    color: var(--teal);
+}
+
+.contact-form input,
+.contact-form textarea {
+    transition:
+        border-color 0.3s ease,
+        box-shadow 0.3s ease,
+        background-color 0.3s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: var(--teal);
+    box-shadow: 0 0 12px rgba(0, 229, 204, 0.15);
+}
+
+.contact-form label {
+    transition: color 0.25s ease;
+}
+
+.contact-form .btn {
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.contact-form .btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 0 22px rgba(0, 229, 204, 0.25);
+}
+
+/* ========================================
+   17. TABLET RESPONSIVENESS
 ======================================== */
 
 @media (max-width: 900px) {
+
     header,
     .header {
         padding: 20px 5%;
@@ -1036,13 +1945,15 @@ footer {
     .profile-placeholder {
         width: 230px;
     }
+
 }
 
 /* ========================================
-   13. MOBILE RESPONSIVENESS
+   18. MOBILE RESPONSIVENESS
 ======================================== */
 
 @media (max-width: 600px) {
+
     header,
     .header {
         flex-direction: column;
@@ -1154,141 +2065,121 @@ footer {
     .contact-form-container {
         padding: 22px;
     }
+
 }
 
 /* ========================================
-   14. ACCESSIBILITY: REDUCED MOTION
+   19. WEATHER WIDGET RESPONSIVENESS
 ======================================== */
 
-@media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
-        scroll-behavior: auto !important;
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
+@media (max-width: 768px) {
+
+    .weather-widget {
+        position: relative;
+        top: auto;
+        right: auto;
+        width: min(90%, 350px);
+        margin: 0 auto;
     }
 
-    .hero .welcome,
-    .hero h1,
-    .hero h2,
-    .hero h3,
-    .hero .intro,
-    .hero .hero-buttons .btn {
-        opacity: 1;
-        animation: none;
-        transform: none;
-    }
 }
+
 /* ========================================
-   SKILLS PAGE ANIMATIONS
+   HOURLY WEATHER FORECAST
 ======================================== */
 
-/* Skills heading animation */
-.skills-section > .welcome {
-    animation: skillsFadeIn 0.7s ease both;
+#weather-hourly {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    padding: 8px 2px 12px;
 }
 
-.skills-section > h2 {
-    animation: skillsSlideUp 0.8s ease 0.15s both;
+.hourly-card {
+    min-width: 105px;
+    padding: 12px 8px;
+    text-align: center;
+    background: var(--bg);
+    border: 1px solid rgba(0, 229, 204, 0.25);
+    border-radius: 10px;
 }
 
-.skills-section > .intro {
-    animation: skillsSlideUp 0.8s ease 0.3s both;
+.hourly-time {
+    color: var(--teal);
+    font-size: 13px;
+    font-weight: bold;
 }
 
-/* Skill cards appear one after another */
-.skills-grid .skill-card {
-    opacity: 0;
-    animation: skillsSlideUp 0.7s ease forwards;
-    transition:
-        transform 0.3s ease,
-        border-color 0.3s ease,
-        box-shadow 0.3s ease;
+.hourly-condition {
+    color: var(--muted);
+    font-size: 11px;
+    margin: 8px 0;
 }
 
-.skills-grid .skill-card:nth-child(1) {
-    animation-delay: 0.35s;
+.hourly-card h4 {
+    color: var(--white);
+    font-size: 17px;
 }
 
-.skills-grid .skill-card:nth-child(2) {
-    animation-delay: 0.45s;
+.hourly-rain {
+    color: var(--muted);
+    font-size: 11px;
+    margin-top: 6px;
 }
 
-.skills-grid .skill-card:nth-child(3) {
-    animation-delay: 0.55s;
+/* ========================================
+   7-DAY WEATHER FORECAST
+======================================== */
+
+.forecast-heading {
+    color: var(--teal);
+    font-size: 16px;
+    margin-top: 20px;
+    margin-bottom: 12px;
 }
 
-.skills-grid .skill-card:nth-child(4) {
-    animation-delay: 0.65s;
+#weather-forecast {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
 }
 
-.skills-grid .skill-card:nth-child(5) {
-    animation-delay: 0.75s;
+.forecast-card {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 12px;
+    background: var(--bg);
+    border: 1px solid rgba(0, 229, 204, 0.25);
+    border-radius: 10px;
 }
 
-.skills-grid .skill-card:nth-child(6) {
-    animation-delay: 0.85s;
+.forecast-day {
+    color: var(--teal);
+    font-size: 14px;
+    font-weight: bold;
 }
 
-.skills-grid .skill-card:nth-child(7) {
-    animation-delay: 0.95s;
+.forecast-date {
+    color: var(--muted);
+    font-size: 11px;
 }
 
-.skills-grid .skill-card:nth-child(8) {
-    animation-delay: 1.05s;
+.forecast-condition {
+    color: var(--white);
+    font-size: 12px;
 }
 
-/* Teal glow on hover */
-.skills-grid .skill-card:hover {
-    transform: translateY(-8px);
-    border-color: var(--teal);
-    box-shadow: 0 0 25px rgba(0, 229, 204, 0.2);
+.forecast-temperature {
+    color: var(--white);
+    font-size: 13px;
+    font-weight: bold;
 }
 
-/* Technology labels */
-.skill-card .project-tech {
-    transition:
-        background 0.3s ease,
-        border-color 0.3s ease;
-}
+/* ========================================
+   20. SHARED ANIMATION KEYFRAMES
+======================================== */
 
-.skill-card:hover .project-tech {
-    background: rgba(0, 229, 204, 0.13);
-    border-color: var(--teal);
-}
-
-/* Learning goals cards */
-.home-grid .home-card {
-    animation: skillsSlideUp 0.8s ease both;
-}
-
-.home-grid .home-card:nth-child(1) {
-    animation-delay: 0.15s;
-}
-
-.home-grid .home-card:nth-child(2) {
-    animation-delay: 0.3s;
-}
-
-.home-grid .home-card:nth-child(3) {
-    animation-delay: 0.45s;
-}
-
-/* Contact button */
-.contact-preview .btn {
-    transition:
-        transform 0.3s ease,
-        box-shadow 0.3s ease;
-}
-
-.contact-preview .btn:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 0 22px rgba(0, 229, 204, 0.3);
-}
-
-/* Animation keyframes */
 @keyframes skillsFadeIn {
     from {
         opacity: 0;
@@ -1311,176 +2202,32 @@ footer {
     }
 }
 
-/* Accessibility: reduce motion if requested */
+/* ========================================
+   21. ACCESSIBILITY: REDUCED MOTION
+======================================== */
+
 @media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    .hero .welcome,
+    .hero h1,
+    .hero h2,
+    .hero h3,
+    .hero .intro,
+    .hero .hero-buttons .btn,
     .skills-section > .welcome,
     .skills-section > h2,
     .skills-section > .intro,
     .skills-grid .skill-card,
-    .home-grid .home-card {
-        animation: none;
-        opacity: 1;
-        transform: none;
-    }
-}
-/* ========================================
-   ABOUT PAGE ANIMATIONS
-======================================== */
-
-/* Section headings fade in */
-.about-section .section-heading,
-.education-section .section-heading,
-.interests-section .section-heading {
-    animation: skillsFadeIn 0.8s ease both;
-}
-
-/* Profile area slides in from the left */
-.about-section .about-image {
-    animation: aboutSlideLeft 0.9s ease 0.15s both;
-}
-
-/* Introduction slides in from the right */
-.about-section .about-content {
-    animation: aboutSlideRight 0.9s ease 0.25s both;
-}
-
-/* Profile placeholder glow */
-.profile-placeholder {
-    transition:
-        transform 0.35s ease,
-        box-shadow 0.35s ease;
-}
-
-.profile-placeholder:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 28px rgba(0, 229, 204, 0.3);
-}
-
-/* About details appear smoothly */
-.about-details .detail-item {
-    animation: skillsSlideUp 0.6s ease both;
-}
-
-.about-details .detail-item:nth-child(1) {
-    animation-delay: 0.3s;
-}
-
-.about-details .detail-item:nth-child(2) {
-    animation-delay: 0.4s;
-}
-
-.about-details .detail-item:nth-child(3) {
-    animation-delay: 0.5s;
-}
-
-.about-details .detail-item:nth-child(4) {
-    animation-delay: 0.6s;
-}
-
-/* Education card entrance and hover */
-.education-card {
-    animation: skillsSlideUp 0.8s ease 0.2s both;
-    transition:
-        transform 0.3s ease,
-        border-color 0.3s ease,
-        box-shadow 0.3s ease;
-}
-
-.education-card:hover {
-    transform: translateY(-5px);
-    border-color: var(--teal);
-    box-shadow: 0 0 22px rgba(0, 229, 204, 0.15);
-}
-
-/* Interest cards appear one after another */
-.interests-grid .interest-card {
-    animation: skillsSlideUp 0.7s ease both;
-    transition:
-        transform 0.3s ease,
-        border-color 0.3s ease,
-        box-shadow 0.3s ease;
-}
-
-.interests-grid .interest-card:nth-child(1) {
-    animation-delay: 0.15s;
-}
-
-.interests-grid .interest-card:nth-child(2) {
-    animation-delay: 0.3s;
-}
-
-.interests-grid .interest-card:nth-child(3) {
-    animation-delay: 0.45s;
-}
-
-.interests-grid .interest-card:nth-child(4) {
-    animation-delay: 0.6s;
-}
-
-.interests-grid .interest-card:hover {
-    transform: translateY(-7px);
-    border-color: var(--teal);
-    box-shadow: 0 0 24px rgba(0, 229, 204, 0.17);
-}
-
-/* Interest icons animate on hover */
-.interest-icon {
-    transition:
-        transform 0.3s ease,
-        color 0.3s ease;
-}
-
-.interest-card:hover .interest-icon {
-    transform: scale(1.12);
-    color: var(--teal);
-}
-
-/* Career goals section */
-.goals-section .goals-content {
-    animation: skillsSlideUp 0.8s ease both;
-}
-
-/* Buttons */
-.about-section .btn,
-.goals-section .btn {
-    transition:
-        transform 0.3s ease,
-        box-shadow 0.3s ease;
-}
-
-.about-section .btn:hover,
-.goals-section .btn:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 0 22px rgba(0, 229, 204, 0.25);
-}
-
-/* Animation keyframes */
-@keyframes aboutSlideLeft {
-    from {
-        opacity: 0;
-        transform: translateX(-35px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-@keyframes aboutSlideRight {
-    from {
-        opacity: 0;
-        transform: translateX(35px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-/* Accessibility */
-@media (prefers-reduced-motion: reduce) {
+    .home-grid .home-card,
     .about-section .section-heading,
     .education-section .section-heading,
     .interests-section .section-heading,
@@ -1489,283 +2236,17 @@ footer {
     .about-details .detail-item,
     .education-card,
     .interests-grid .interest-card,
-    .goals-section .goals-content {
-        animation: none;
-        opacity: 1;
-        transform: none;
-    }
-
-    .profile-placeholder,
-    .education-card,
-    .interests-grid .interest-card,
-    .interest-icon,
-    .about-section .btn,
-    .goals-section .btn {
-        transition: none;
-    }
-}
-/* ========================================
-   PROJECTS PAGE ANIMATIONS
-======================================== */
-
-/* Projects heading */
-.projects-section > .welcome {
-    animation: skillsFadeIn 0.7s ease both;
-}
-
-.projects-section > h1 {
-    animation: skillsSlideUp 0.8s ease 0.15s both;
-}
-
-.projects-section > .intro {
-    animation: skillsSlideUp 0.8s ease 0.3s both;
-}
-
-/* Project cards enter one by one */
-.projects-grid .project-card {
-    animation: skillsSlideUp 0.75s ease both;
-    transition:
-        transform 0.35s ease,
-        border-color 0.35s ease,
-        box-shadow 0.35s ease;
-}
-
-.projects-grid .project-card:nth-child(1) {
-    animation-delay: 0.35s;
-}
-
-.projects-grid .project-card:nth-child(2) {
-    animation-delay: 0.5s;
-}
-
-.projects-grid .project-card:nth-child(3) {
-    animation-delay: 0.65s;
-}
-
-.projects-grid .project-card:nth-child(4) {
-    animation-delay: 0.8s;
-}
-
-/* Lift and glow when hovering */
-.projects-grid .project-card:hover {
-    transform: translateY(-8px);
-    border-color: var(--teal);
-    box-shadow: 0 0 25px rgba(0, 229, 204, 0.18);
-}
-
-/* Project number icon */
-.project-card .project-icon {
-    transition:
-        transform 0.35s ease,
-        background 0.35s ease,
-        box-shadow 0.35s ease;
-}
-
-.project-card:hover .project-icon {
-    transform: scale(1.08);
-    box-shadow: 0 0 18px rgba(0, 229, 204, 0.2);
-}
-
-/* Technology tags */
-.project-card .project-tech span {
-    transition:
-        color 0.25s ease,
-        background 0.25s ease,
-        border-color 0.25s ease;
-}
-
-.project-card .project-tech span:hover {
-    color: var(--teal);
-    background: rgba(0, 229, 204, 0.12);
-    border-color: var(--teal);
-}
-
-/* GitHub project links */
-.project-card .project-link {
-    display: inline-block;
-    transition:
-        color 0.25s ease,
-        transform 0.25s ease;
-}
-
-.project-card .project-link:hover {
-    color: var(--teal);
-    transform: translateX(5px);
-}
-
-/* Learning section */
-.goals-section > .welcome {
-    animation: skillsFadeIn 0.7s ease both;
-}
-
-.goals-section > h2 {
-    animation: skillsSlideUp 0.8s ease 0.1s both;
-}
-
-.goals-section .goals-content {
-    animation: skillsSlideUp 0.8s ease 0.25s both;
-}
-
-.goals-section li {
-    transition:
-        color 0.25s ease,
-        transform 0.25s ease;
-}
-
-.goals-section li:hover {
-    color: var(--teal);
-    transform: translateX(5px);
-}
-
-/* Contact section */
-.contact-preview > .welcome,
-.contact-preview > h2,
-.contact-preview > p,
-.contact-preview > .btn {
-    animation: skillsSlideUp 0.7s ease both;
-}
-
-.contact-preview > h2 {
-    animation-delay: 0.1s;
-}
-
-.contact-preview > p {
-    animation-delay: 0.2s;
-}
-
-.contact-preview > .btn {
-    animation-delay: 0.3s;
-}
-
-.contact-preview > .btn {
-    transition:
-        transform 0.3s ease,
-        box-shadow 0.3s ease;
-}
-
-.contact-preview > .btn:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 0 22px rgba(0, 229, 204, 0.25);
-}
-
-/* Respect reduced-motion preferences */
-@media (prefers-reduced-motion: reduce) {
+    .goals-section .goals-content,
     .projects-section > .welcome,
     .projects-section > h1,
     .projects-section > .intro,
     .projects-grid .project-card,
     .goals-section > .welcome,
     .goals-section > h2,
-    .goals-section .goals-content,
     .contact-preview > .welcome,
     .contact-preview > h2,
     .contact-preview > p,
-    .contact-preview > .btn {
-        animation: none;
-        opacity: 1;
-        transform: none;
-    }
-
-    .projects-grid .project-card,
-    .project-card .project-icon,
-    .project-card .project-link,
-    .goals-section li,
-    .contact-preview > .btn {
-        transition: none;
-    }
-}
-
-/* ========================================
-   CONTACT PAGE ANIMATIONS
-======================================== */
-
-/* Contact heading */
-.contact-section > .welcome {
-    animation: skillsFadeIn 0.7s ease both;
-}
-
-.contact-section > h1 {
-    animation: skillsSlideUp 0.8s ease 0.15s both;
-}
-
-.contact-section > .intro {
-    animation: skillsSlideUp 0.8s ease 0.3s both;
-}
-
-/* Contact information slides in from left */
-.contact-info {
-    animation: aboutSlideLeft 0.8s ease 0.35s both;
-}
-
-/* Contact form slides in from right */
-.contact-form-container {
-    animation: aboutSlideRight 0.8s ease 0.45s both;
-}
-
-/* Contact information cards */
-.contact-info .contact-item {
-    transition:
-        transform 0.3s ease,
-        border-color 0.3s ease,
-        box-shadow 0.3s ease;
-}
-
-.contact-info .contact-item:hover {
-    transform: translateX(6px);
-    border-color: var(--teal);
-    box-shadow: 0 0 18px rgba(0, 229, 204, 0.12);
-}
-
-/* Contact links */
-.contact-info .contact-item a {
-    transition: color 0.25s ease;
-    overflow-wrap: anywhere;
-}
-
-.contact-info .contact-item a:hover {
-    color: var(--teal);
-}
-
-/* Form fields */
-.contact-form input,
-.contact-form textarea {
-    transition:
-        border-color 0.3s ease,
-        box-shadow 0.3s ease,
-        background-color 0.3s ease;
-}
-
-.contact-form input:focus,
-.contact-form textarea:focus {
-    outline: none;
-    border-color: var(--teal);
-    box-shadow: 0 0 12px rgba(0, 229, 204, 0.15);
-}
-
-/* Form labels */
-.contact-form label {
-    transition: color 0.25s ease;
-}
-
-.contact-form input:focus + label,
-.contact-form textarea:focus + label {
-    color: var(--teal);
-}
-
-/* Send Message button */
-.contact-form .btn {
-    transition:
-        transform 0.3s ease,
-        box-shadow 0.3s ease;
-}
-
-.contact-form .btn:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 0 22px rgba(0, 229, 204, 0.25);
-}
-
-/* Accessibility */
-@media (prefers-reduced-motion: reduce) {
+    .contact-preview > .btn,
     .contact-section > .welcome,
     .contact-section > h1,
     .contact-section > .intro,
@@ -1776,6 +2257,17 @@ footer {
         transform: none;
     }
 
+    .profile-placeholder,
+    .education-card,
+    .interests-grid .interest-card,
+    .interest-icon,
+    .about-section .btn,
+    .goals-section .btn,
+    .projects-grid .project-card,
+    .project-card .project-icon,
+    .project-card .project-link,
+    .goals-section li,
+    .contact-preview > .btn,
     .contact-info .contact-item,
     .contact-info .contact-item a,
     .contact-form input,
@@ -1784,4 +2276,5 @@ footer {
     .contact-form .btn {
         transition: none;
     }
+
 }

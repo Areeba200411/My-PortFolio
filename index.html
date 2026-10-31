@@ -10,14 +10,21 @@
 
     <title>Areeba Sharif | Developer Portfolio</title>
 
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- CSS Files -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/chatbot.css">
+
 </head>
 
 <body>
 
     <!-- Header and Navigation -->
     <header class="header">
+
         <nav class="navbar" aria-label="Main navigation">
 
             <a href="index.html" class="logo">
@@ -25,114 +32,282 @@
             </a>
 
             <ul class="nav-links">
+
                 <li>
                     <a href="index.html" class="active">Home</a>
                 </li>
+
                 <li>
                     <a href="about.html">About</a>
                 </li>
+
                 <li>
                     <a href="skills.html">Skills</a>
                 </li>
+
                 <li>
                     <a href="projects.html">Projects</a>
                 </li>
+
                 <li>
                     <a href="contact.html">Contact</a>
                 </li>
+
             </ul>
 
+            <!-- Weather Navigation Button -->
+            <button
+                type="button"
+                id="weather-toggle"
+                class="weather-toggle"
+                aria-expanded="false"
+                aria-controls="weather-widget">
+
+                <i class="fas fa-cloud-sun"></i>
+                Weather
+
+            </button>
+
         </nav>
+
     </header>
 
+
     <main>
-    
-<!-- Hero Section -->
-<section class="hero" id="home">
-    <div class="hero-content">
-        <div class="hero-text">
 
-            <p class="welcome">WELCOME TO MY PORTFOLIO</p>
+        <!-- ========================================
+             WEATHER WIDGET
+        ======================================== -->
 
-            <h1>Hi, I'm <span>Areeba Sharif</span></h1>
+        <div class="weather-widget" id="weather-widget">
 
-            <h2>Computer Science Student &amp; Web Developer</h2>
+            <div class="weather-widget-header">
 
-            <p class="intro">
-                I am a Computer Science student interested in web
-                development and artificial intelligence. I enjoy
-                learning new technologies and building projects
-                to improve my skills.
+                <span>LIVE WEATHER</span>
+
+                <button
+                    type="button"
+                    id="weather-close"
+                    class="weather-close"
+                    aria-label="Close weather">
+
+                    &times;
+
+                </button>
+
+            </div>
+
+            <!-- City Search -->
+            <div class="weather-search">
+
+                <input
+                    type="text"
+                    id="city-input"
+                    placeholder="Enter city..."
+                    aria-label="Enter city name">
+
+                <button
+                    type="button"
+                    id="weather-btn">
+
+                    Search
+
+                </button>
+
+            </div>
+            <button
+    type="button"
+    id="location-weather-btn"
+    class="location-weather-btn">
+
+    <i class="fas fa-location-crosshairs"></i>
+    Use My Location
+
+</button>
+
+            <p id="weather-status">
+                Search for a city
             </p>
 
-            <div class="hero-buttons">
-                <a href="#projects" class="btn">
-                    View My Projects
-                </a>
 
-                <a href="contact.html" class="btn secondary">
-                    Contact Me
-                </a>
+            <!-- Weather Results -->
+            <div id="weather-result" class="weather-result">
+
+                <h3 id="weather-city"></h3>
+
+                <h2 id="weather-temperature"></h2>
+
+                <p id="weather-condition"></p>
+
+
+                <!-- Weather Details -->
+                <div class="weather-details">
+
+                    <p>
+                        Humidity:
+                        <span id="weather-humidity">--</span>
+                    </p>
+
+                    <p>
+                        Wind:
+                        <span id="weather-wind">--</span> km/h
+                    </p>
+
+                </div>
+
+
+                <!-- Hourly Forecast -->
+                <h3 class="forecast-heading">
+                    Hourly Forecast
+                </h3>
+
+                <div id="weather-hourly"></div>
+
+
+                <!-- Weekly Forecast -->
+                <h3 class="forecast-heading">
+                    7-Day Forecast
+                </h3>
+
+                <div id="weather-forecast"></div>
+
             </div>
 
         </div>
-    </div>
-</section>
 
-        
 
-        <!-- Featured Skills Section -->
+        <!-- ========================================
+             HERO SECTION
+        ======================================== -->
+
+        <section class="hero" id="home">
+
+            <div class="hero-content">
+
+                <div class="hero-text">
+
+                    <p class="welcome">
+                        WELCOME TO MY PORTFOLIO
+                    </p>
+
+                    <h1>
+                        Hi, I'm <span>Areeba Sharif</span>
+                    </h1>
+
+                    <h2>
+                        Computer Science Student &amp; Web Developer
+                    </h2>
+
+                    <p class="intro">
+
+                        I am a Computer Science student interested in web
+                        development and artificial intelligence. I enjoy
+                        learning new technologies and building projects
+                        to improve my skills.
+
+                    </p>
+
+
+                    <div class="hero-buttons">
+
+                        <a href="#projects" class="btn">
+                            View My Projects
+                        </a>
+
+                        <a href="contact.html" class="btn secondary">
+                            Contact Me
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ========================================
+             FEATURED SKILLS SECTION
+        ======================================== -->
+
         <section class="home-section" id="skills">
 
-            <p class="welcome">WHAT I WORK WITH</p>
+            <p class="welcome">
+                WHAT I WORK WITH
+            </p>
 
-            <h2>Featured <span>Skills</span></h2>
+            <h2>
+                Featured <span>Skills</span>
+            </h2>
+
 
             <div class="home-grid">
 
                 <article class="home-card">
+
                     <h3>Web Development</h3>
 
                     <p>
                         HTML, CSS, JavaScript, React, Node.js,
                         and Express.js.
                     </p>
+
                 </article>
 
+
                 <article class="home-card">
+
                     <h3>Programming</h3>
 
                     <p>
                         Python, C++, JavaScript, and SQL.
                     </p>
+
                 </article>
 
+
                 <article class="home-card">
+
                     <h3>Databases &amp; Tools</h3>
 
                     <p>
                         MongoDB, MySQL, Git, GitHub, and VS Code.
                     </p>
+
                 </article>
 
             </div>
 
+
             <div class="hero-buttons">
+
                 <a href="skills.html" class="btn secondary">
                     View All Skills
                 </a>
+
             </div>
 
         </section>
 
-        <!-- Featured Projects Section -->
+
+        <!-- ========================================
+             FEATURED PROJECTS SECTION
+        ======================================== -->
+
         <section class="home-section" id="projects">
 
-            <p class="welcome">MY RECENT WORK</p>
+            <p class="welcome">
+                MY RECENT WORK
+            </p>
 
-            <h2>Featured <span>Projects</span></h2>
+            <h2>
+                Featured <span>Projects</span>
+            </h2>
+
 
             <div class="home-grid">
+
 
                 <!-- Project 1: LMS -->
                 <article class="home-card">
@@ -140,9 +315,11 @@
                     <h3>Learning Management System</h3>
 
                     <p>
+
                         A web application for managing students,
                         instructors, courses, lectures, learning
                         materials, and assessments.
+
                     </p>
 
                     <p class="project-tech">
@@ -154,10 +331,13 @@
                         target="_blank"
                         rel="noopener noreferrer"
                         class="project-link">
+
                         View on GitHub →
+
                     </a>
 
                 </article>
+
 
                 <!-- Project 2: MedNoviAI -->
                 <article class="home-card">
@@ -165,9 +345,11 @@
                     <h3>MedNoviAI</h3>
 
                     <p>
+
                         An academic healthcare web application project
                         focused on patient intake, AI-assisted chat,
                         and organizing health-related information.
+
                     </p>
 
                     <p class="project-tech">
@@ -182,15 +364,18 @@
 
                 </article>
 
+
                 <!-- Project 3: Portfolio -->
                 <article class="home-card">
 
                     <h3>Personal Portfolio Website</h3>
 
                     <p>
+
                         A personal website designed to introduce me,
                         showcase my technical skills, present my
                         projects, and share my learning journey.
+
                     </p>
 
                     <p class="project-tech">
@@ -205,27 +390,35 @@
 
                 </article>
 
+
                 <!-- Project 4: Fraud Detection -->
                 <article class="home-card">
 
                     <h3>Online Payment Fraud Detection System</h3>
 
                     <p>
+
                         A machine learning project that analyzes
                         online payment transactions and compares
                         classification algorithms to identify
                         potentially fraudulent transactions.
+
                     </p>
 
                     <p class="project-tech">
+
                         Python · Pandas · NumPy · Matplotlib ·
                         Seaborn · Scikit-learn · Imbalanced-learn
+
                     </p>
 
                     <p>
+
                         <strong>Models:</strong>
+
                         Logistic Regression, Decision Tree,
                         Random Forest, and Linear SVM.
+
                     </p>
 
                     <a
@@ -233,14 +426,19 @@
                         target="_blank"
                         rel="noopener noreferrer"
                         class="project-link">
+
                         View on GitHub →
+
                     </a>
 
                 </article>
 
+
             </div>
 
+
             <div class="hero-buttons projects-button">
+
                 <a href="projects.html" class="btn">
                     View All Projects
                 </a>
@@ -248,27 +446,38 @@
                 <a href="about.html" class="btn secondary">
                     Learn More About Me
                 </a>
+
             </div>
 
         </section>
 
-        <!-- Contact Call to Action -->
+
+        <!-- ========================================
+             CONTACT SECTION
+        ======================================== -->
+
         <section class="home-section contact-preview">
 
-            <p class="welcome">LET'S CONNECT</p>
+            <p class="welcome">
+                LET'S CONNECT
+            </p>
 
             <h2>
                 Have a <span>Project in Mind?</span>
             </h2>
 
             <p class="intro">
+
                 I'm interested in learning, collaborating, and
                 exploring new opportunities in technology.
                 Feel free to contact me about internships,
                 projects, or professional opportunities.
+
             </p>
 
+
             <div class="hero-buttons">
+
                 <a href="contact.html" class="btn">
                     Get in Touch
                 </a>
@@ -276,88 +485,165 @@
                 <a href="about.html" class="btn secondary">
                     About Me
                 </a>
+
             </div>
 
         </section>
 
     </main>
 
-    <!-- Footer -->
+
+    <!-- ========================================
+         FOOTER
+    ======================================== -->
+
     <footer class="footer">
+
         <p>
             &copy; 2026 Areeba Sharif. All rights reserved.
         </p>
+
     </footer>
 
-    
+
+    <!-- ========================================
+         MAIN JAVASCRIPT
+    ======================================== -->
+
     <script src="js/script.js"></script>
 
-    <!-- AI Portfolio Assistant -->
-    <div class="chatbot-panel" id="chatbotPanel"
-         role="dialog"
-         aria-label="Areeba's AI Portfolio Assistant">
+
+    <!-- ========================================
+         AI PORTFOLIO ASSISTANT
+    ======================================== -->
+
+    <div
+        class="chatbot-panel"
+        id="chatbotPanel"
+        role="dialog"
+        aria-label="Areeba's AI Portfolio Assistant">
 
         <div class="chatbot-header">
+
             <div>
+
                 <h3>Areeba's AI Assistant</h3>
+
                 <p>Ask me about Areeba!</p>
+
             </div>
 
-            <button class="chatbot-close"
-                    id="chatbotClose"
-                    type="button"
-                    aria-label="Close chat">&times;</button>
+
+            <button
+                class="chatbot-close"
+                id="chatbotClose"
+                type="button"
+                aria-label="Close chat">
+
+                &times;
+
+            </button>
+
         </div>
 
-        <div class="chatbot-messages"
-             id="chatbotMessages"
-             aria-live="polite">
+
+        <div
+            class="chatbot-messages"
+            id="chatbotMessages"
+            aria-live="polite">
+
             <div class="chatbot-message bot">
+
                 Hi! Welcome to Areeba's portfolio.
 
                 Ask me about her skills, projects, education,
                 or contact details.
+
             </div>
+
         </div>
 
+
+        <!-- Chatbot Suggestions -->
         <div class="chatbot-suggestions">
-            <button type="button"
-                    data-question="What are Areeba's skills?">Skills</button>
 
-            <button type="button"
-                    data-question="Tell me about Areeba's projects.">Projects</button>
+            <button
+                type="button"
+                data-question="What are Areeba's skills?">
 
-            <button type="button"
-                    data-question="Tell me about Areeba's education.">Education</button>
+                Skills
 
-            <button type="button"
-                    data-question="How can I contact Areeba?">Contact</button>
+            </button>
+
+
+            <button
+                type="button"
+                data-question="Tell me about Areeba's projects.">
+
+                Projects
+
+            </button>
+
+
+            <button
+                type="button"
+                data-question="Tell me about Areeba's education.">
+
+                Education
+
+            </button>
+
+
+            <button
+                type="button"
+                data-question="How can I contact Areeba?">
+
+                Contact
+
+            </button>
+
         </div>
 
-        <form class="chatbot-form" id="chatbotForm">
-            <input type="text"
-                   id="chatbotInput"
-                   placeholder="Ask a question..."
-                   aria-label="Your question"
-                   autocomplete="off"
-                   required>
 
-            <button type="submit">Send</button>
+        <!-- Chatbot Form -->
+        <form class="chatbot-form" id="chatbotForm">
+
+            <input
+                type="text"
+                id="chatbotInput"
+                placeholder="Ask a question..."
+                aria-label="Your question"
+                autocomplete="off"
+                required>
+
+            <button type="submit">
+                Send
+            </button>
+
         </form>
+
     </div>
 
-    <!-- Floating AI Button (no icon required) -->
-    <button class="chatbot-toggle"
-            id="chatbotToggle"
-            type="button"
-            aria-label="Open portfolio assistant"
-            aria-controls="chatbotPanel"
-            aria-expanded="false">
-        <span class="chatbot-button-text">AI</span>
+
+    <!-- Floating AI Button -->
+    <button
+        class="chatbot-toggle"
+        id="chatbotToggle"
+        type="button"
+        aria-label="Open portfolio assistant"
+        aria-controls="chatbotPanel"
+        aria-expanded="false">
+
+        <span class="chatbot-button-text">
+            AI
+        </span>
+
     </button>
+
 
     <!-- Chatbot JavaScript -->
     <script src="js/chatbot.js" defer></script>
 
 </body>
+
 </html>
